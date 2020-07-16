@@ -905,7 +905,7 @@ struct object_equal_visitor {
         return true;
     }
     bool visit_float32(float v) {
-        if (m_ptr->type != msgpack::type::FLOAT32 || m_ptr->via.f64 != v) {
+        if (m_ptr->type != msgpack::type::FLOAT32 || static_cast<float>(m_ptr->via.f64) != v) {
             m_result = false;
             return false;
         }
